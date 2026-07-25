@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán Chuyển Khoản</title>
+</head>
+<body style="text-align: center; font-family: Arial, sans-serif; padding-top: 50px;">
+
+    <h2>Đang mở ứng dụng ngân hàng để thanh toán...</h2>
+    <p>Nếu app không tự mở, hãy bấm nút bên dưới:</p>
+    
+    <a id="btn-pay" href="#" style="display: inline-block; padding: 15px 25px; background-color: #007bff; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px;">
+        Mở App Ngân Hàng Thanh Toán
+    </a>
+
+    <script>
+        // === THÔNG TIN NGÂN HÀNG CỦA BẠN ===
+        const BANK_ID = "VietinBank"; // Mã ngân hàng VietinBank
+        const ACCOUNT_NO = "109880778028"; // Số tài khoản của bạn
+        const ACCOUNT_NAME = "HUYNH TIEN NHUT"; // Tên chủ tài khoản
+        const AMOUNT = ""; // Số tiền (để trống nếu muốn khách tự nhập, hoặc điền số như "50000")
+        const DESCRIPTION = "Thanh toan Pay001"; // Nội dung chuyển khoản
+
+        // Tạo đường dẫn VietQR chuẩn
+        const vietQrUrl = `https://img.vietqr.io/image/${BANK_ID}-${ACCOUNT_NO}-compact2.jpg?amount=${AMOUNT}&addInfo=${encodeURIComponent(DESCRIPTION)}&accountName=${encodeURIComponent(ACCOUNT_NAME)}`;
+
+        // Gán link vào nút bấm
+        document.getElementById("btn-pay").href = vietQrUrl;
+
+        // Tự động chuyển hướng sang QR VietinBank ngay khi mở trang
+        window.location.href = vietQrUrl;
+    </script>
+</body>
+</html>
